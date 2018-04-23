@@ -1,6 +1,6 @@
 const Genome = require("./genome");
 
-class Gene {
+export default class Gene {
     constructor(data, isEnabledFn = Genome.NeverActivated) {
         this._data = data;
         this._isEnabled = isEnabledFn;
@@ -31,7 +31,7 @@ class Gene {
     }
 }
 
-class NumericGene extends Gene {
+export class NumericGene extends Gene {
     static isInteger(data) {
         return data.toString().includes('.');
     }
@@ -66,7 +66,7 @@ class NumericGene extends Gene {
     }
 }
 
-class BinaryGene extends Gene {
+export class BinaryGene extends Gene {
     get type() {
         return "binary";
     }
@@ -98,7 +98,7 @@ class BinaryGene extends Gene {
     }
 }
 
-class TextGene extends Gene {
+export class TextGene extends Gene {
     get type() {
         return 'text'
     }
@@ -134,9 +134,3 @@ class TextGene extends Gene {
         return `t:${JSON.stringify(this.data)}`
     }
 }
-
-Gene.TextGene = TextGene;
-Gene.NumericGene = NumericGene;
-Gene.BinaryGene = BinaryGene;
-
-module.exports = Gene;

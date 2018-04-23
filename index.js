@@ -1,6 +1,5 @@
-module.export = {
-    Gene: require('./src/gene'),
-    Genome: require('./src/genome')
-};
+import Gene from './src/gene'
+import Genome from './src/genome';
+import Renderer from './src/renderer';
 
-// require ('./src/gene');
+export {Gene, Genome, Renderer}

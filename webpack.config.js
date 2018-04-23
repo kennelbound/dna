@@ -1,4 +1,3 @@
-
 const path = require('path');
 const webpack = require('webpack');
 
@@ -7,22 +6,15 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index_bundle.js',
-        libraryTarget: 'umd',
-        library: 'add'
+        libraryTarget: 'var',
+        library: 'DNA'
     },
     module: {
         rules: [
             {
-                test: /\.(js)$/,
-                use: 'babel-loader'
-            },
-            {
-                test: require.resolve('./src/gene'),
-                use: {loader:'expose-loader', options: 'Gene'}
-            },
-            {
-                test: require.resolve('./src/genome'),
-                use: {loader:'expose-loader', options: 'Genome'}
+                test: /src\/\.(js)$/,
+                use: 'babel-loader',
+                exclude: /(node_modules)/
             }
         ]
     },
